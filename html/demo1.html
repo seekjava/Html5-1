@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>块级标签和行内标签的使用和转化</title>
+</head>
+<body>
+  <!--
+  块级标签： 占据一整行， 高度，行高，内边距和外边距都可以改变
+      宽度和浏览器的宽度一样，和内容无关
+      可以容纳块级标签和其他行内标签
+ -->
+  <div style="height: 50px; background: #6DC5DC;"></div>
+  <article>this is a article 1</article>
+  <article>this is a article 2</article>
+  <blockquote cite="https://developer.mozilla.org/zh-CN/docs/Learn">
+    <p>This is a quotation taken from the Mozilla Developer Center.</p>
+  </blockquote>
+<!--
+行内标签： 只占内容宽度大小，高度，行高，内边距和外边是部分可以改变
+ -->
+  <span style="background: blue">提供了响应式 (Reactive) </span>
+  <span style="background: green">和组件化 (Composable) 的视图组件 </span>
+<br>
+  <a href="#">click me</a>
+  <dfn id="dfn">font size</dfn>
+  <big>large font</big>
+<br><br><br>
+<!--
+  行内转成块级
+ -->
+<a href="#" style="display: block;font-size:22px; background: gold;"> I am a element.</a>
+<span style="font-size:36px; background:pink;">hello everynone</span>
+<br><br><br>
+<!--
+  块级转成行内
+ -->
+<address style="background: lightblue; display: inline;">浦东软件园</address>
+<h1 style="background: lightgreen; display: inline;">职业技能</h1>
+<h3 style="background: blue; display: inline;">培训中心</h3>
+
+<!--
+  自定义一个标签属性
+ -->
+ <div onclick="fillFont(this)" data-myself="div element">this is a </div>
+<script type="text/javascript">
+
+  function fillFont(obj) {
+    var id = document.getElementById('dfn');
+    console.log(id);
+    var name = obj.getAttribute("data-myself");
+    console.log(obj.innerHTML + '' + name);
+  }
+</script>
+</body>
+</html>
