@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Canvas</title>
+</head>
+<body>
+  <!-- canvas标签只是图形容器，通过js来完成图片的绘制。
+   使用canvas绘制路径，盒，圆，渐变 和添加图像 -->
+  <canvas id="canvas1" width="200" height="200" style="border: thin red solid;"></canvas>
+<script>
+var canvas = document.getElementById("canvas1");
+var ctx = canvas.getContext("2d");
+
+// 矩形
+// ctx.fillStyle = "#bd8484";
+// ctx.fillRect(0,0, 200, 200);
+
+// 路径（线）
+// ctx.moveTo(0,0);
+// ctx.lineTo(260, 200);
+// ctx.stroke();
+
+// 圆
+// ctx.beginPath();
+// ctx.arc(100, 100, 50, 0, 2*Math.PI)
+// ctx.stroke(); // 空心
+// ctx.fill(); // 实心
+
+// 渐变
+// var grd = ctx.createLinearGradient(0, 0, 0, 200);
+// var grd = ctx.createRadialGradient(50, 80, 5, 100, 50, 10);
+//
+// grd.addColorStop(0, "#D64078");
+// grd.addColorStop(1, "#6AC5AC");
+//
+// ctx.fillStyle= grd;
+// ctx.fillRect(10,10, 200, 100);
+//
+
+</script>
+</body>
+</html>

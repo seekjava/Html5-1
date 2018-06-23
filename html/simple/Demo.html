@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="cn" manifest="welcome_offline.manifest">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<link rel="stylesheet" href="./demostyle.css">
+	<link href="./18718939.jpg" rel="icon" type="image/x-icon">
+	<title>Html5 training</title>
+
+	<script type="text/javascript" src="./jquery.js"></script>
+</head>
+
+<body class="loaded">
+	<div id="container" class="container modify">
+		<div id="homePage" class="page home-page show-frontend">
+			<h1 class="logo home-logo">
+				<span class="a">Html5 </span> <span class="b">Training</span>
+			</h1>
+			<ul id="selectNav" class="select-nav">
+				<span class="selection"></span>
+				<li class="frontend">
+					<a href="#">
+						<strong>HTML5 </strong>
+						<span class="alive icon">
+							<span class="bar a"></span>
+							<span class="bar b"></span>
+							<span class="bar c"></span>
+						</span>
+						<small>Html5 new features.</small>
+					</a>
+				</li>
+				<li class="design">
+					<a href="https://cn.vuejs.org/"> <strong>CSS3</strong> <small>CSS3 learning.</small></a>
+				</li>
+				<li class="design">
+					<a href="https://cn.vuejs.org/"> <strong>VUE</strong> <small>前端框架学习.</small></a>
+				</li>
+			</ul>
+			<div class="spinner spinning">
+				<span class="rings">
+					<span class="ring zero"></span>
+					<span class="ring one"></span>
+					<span class="ring two"></span>
+					<span class="ring three"></span>
+				</span>
+				<div class="preview-frontend">
+					<span class="preview-mini" data-class="frontend">
+						<span class="symbol"> <span class="text">HTML5</span></span>
+					</span>
+					<span class="preview-full"> <span class="circle backdrop"></span>
+						<span class="circle backdrop two"></span>
+						<span class="circle backdrop three"></span>
+						<a href="#" class="circle">
+							<span class="the-circle"></span>
+							<strong>1</strong>
+							<small>Semantic</small>
+						</a>
+						<a href="#" class="two circle">
+							<span class="the-circle"></span>
+							<strong>2</strong> <small>STORAGE</small>
+						</a>
+						<a href="#" class="three circle"> <span class="the-circle"></span> <strong>3</strong> <small>MULTIMEDIA</small>
+						</a>
+					</span>
+				</div>
+				<div class="preview-design">
+					<span class="preview-mini" data-class="design">
+						<span class="symbol"> <span class="text">CSS3</span></span>
+					</span>
+					<span class="preview-full"> <span class="big-circle backdrop"></span>
+					<a href="#" class="big-circle"> <span class="the-circle"></span> <strong>1</strong><small>Animate</small></a>
+					</span>
+				</div>
+				<div class="preview-diary">
+					<span class="preview-mini" data-class="diary"> <span class="symbol"> <span class="text">Vue</span></span></span>
+					<span class="preview-full"> <span class="big-circle backdrop"></span>
+						<a href="https://cn.vuejs.org/v2/guide/" class="big-circle">
+							<span class="the-circle"></span> <strong>1</strong><small>vue2.0</small>
+						</a>
+					</span>
+				</div>
+			</div>
+			<div class="spinner stationary">
+				<div class="preview spinner-frontend">
+					<div class="map-content">
+						<span class="the-map"></span>
+						<span class="bilp">
+							<span class="bilp-ring one"></span>
+						 	<span class="bilp-ring two"></span>
+							<span class="bilp-ring three"></span>
+							<span class="center"></span>
+						</span>
+					</div>
+					<div class="detail">
+						<h3>HTML5 Lable</h3>
+						<h4>attribution and structure</h4>
+					</div>
+				</div>
+				<div class="preview spinner-design">
+					<div class="preview-article">
+						<h3>CSS 用于控制网页的样式和布局。</h3>
+						<p>CSS3 完全向后兼容</p>
+						<a href="http://www.w3school.com.cn/css3/css3_animation.asp" class="goto">w3c</a>
+					</div>
+				</div>
+				<div class="preview spinner-diary">
+					<div class="preview-article">
+						<h2>用于构建用户界面的渐进式框架</h2>
+						<p>Vue 被设计为可以自底向上逐层应用</p>
+						<a href="https://cn.vuejs.org/v2/guide/#Vue-js-%E6%98%AF%E4%BB%80%E4%B9%88" class="goto">See More</a>
+					</div>
+				</div>
+			</div>
+			<footer class="home-footer">
+				<p class="copyright">
+					<a href="https://github.com/victor90"><strong>About Me</strong> <br>
+						<small>Welcome to my GitHub and follow me.</small></a>
+				</p>
+			</footer>
+		</div>
+		<script type="text/javascript">
+			var app = {
+				init: function() {
+					this.initPage();
+					this.loadPage();
+					this.bindLinkJump();
+				},
+				initPage: function() {
+					var page = $('.page'),
+						body = $('body');
+					if (page.hasClass('home-page')) {
+						this.bindHomeEvent();
+					}
+					if (page.hasClass('post-page')) {
+						setTimeout(function() {
+							body.addClass('scrollable');
+						}, 1500);
+					}
+				},
+				loadPage: function() {
+					var body = $('body'),
+						value = 0,
+						interval = setInterval(
+							function() {
+								value++;
+								if (document.readyState === "interactive" ||
+									document.readyState === "complete" ||
+									document.readyState === "Loaded") {
+									if (!body.hasClass('loading')) {
+										body.addClass('loading');
+									};
+								};
+								if (value >= 16) {
+									body.removeClass('loading');
+									body.addClass('loaded');
+									clearInterval(interval);
+								};
+							}, 50);
+				},
+				bindLinkJump: function() {
+					var body = $('body'),
+					a = document.getElementsByTagName('a');
+					$(a).bind('click', function(e) {
+						e.preventDefault();
+						var self = $(this);
+						var link = self.attr('href');
+						if (self.attr('target')) {
+							window.open(link);
+						} else {
+							body.removeClass('scrollable');
+							body.removeClass('loaded');
+							body.addClass('quiting');
+							setTimeout(function() {
+								window.location.href = link;
+								clearTimeout();
+							}, 800);
+						}
+					})
+				},
+				bindHomeEvent: function() {
+					var homePage = $('#homePage'),
+						selectNav = $('#selectNav'),
+						previewMini = $('.preview-mini'),
+						data;
+
+					// 事件绑定
+					selectNav.find('li').bind('mouseenter', function(event) {
+						homePage.spinClass($(this).attr('class'));
+					});
+					previewMini.bind('click', function(event) {
+						data = $(this).attr('data-class');
+						homePage.spinClass(data);
+					});
+
+					// 转盘class操作
+					$.prototype.spinClass = function(_class) {
+						$(this).removeClass('show-frontend');
+						$(this).removeClass('show-design');
+						$(this).removeClass('show-diary');
+						$(this).addClass('show-' + _class);
+					};
+				}
+			}
+			app.init();
+		</script>
+	</div>
+
+
+</body>
+
+</html>

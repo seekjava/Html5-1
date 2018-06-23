@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>canvas</title>
+</head>
+
+<body>
+  <div id="wrap">
+    <h1>canvas 图片clone</h1>
+    <p>original</p>
+    <img src="./circle.jpg" id="circle" width="300" height="300" alt="asd">
+    <p>clone</p>
+    <canvas id="canvas1" width="300" height="300" style="border: thin red solid;"></canvas>
+
+
+    <script>
+      var cv = document.getElementById("canvas1");
+      var im = document.getElementById("circle");
+      var ctx = cv.getContext("2d");
+      im.onload = function() {
+        ctx.drawImage(im, 10, 10);
+      }
+    </script>
+
+  </div>
+</body>
+
+</html>

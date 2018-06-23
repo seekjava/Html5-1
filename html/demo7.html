@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>capture video</title>
+	<style>
+		.left {
+			width: 350px;
+			height: 500px;
+			background: red;
+			float: left;
+		}
+
+		.right {
+			margin-left: 310px;
+			height: 500px;
+			width: 500px;
+			background: yellow;
+			margin-right: 60px
+		}
+
+		#video1,
+		#canvas1 {
+			height: 495px;
+			width: 350px;
+		}
+	</style>
+</head>
+
+<body>
+	<h2 style="text-align: center;">视频剪切
+	</h2 style="text-align: center;">
+	<div class="left">
+		<video id="video1" control autoplay>
+			<source src="movie.mp4">
+		</video>
+	</div>
+	<div class="right">
+		<canvas id="canvas1"></canvas>
+	</div>
+
+<script type="text/javascript">
+	var i;
+	var video = document.getElementById("video1");
+	var canvas = document.getElementById("canvas1");
+
+	var ctx = canvas.getContext("2d");
+	video.addEventListener('play', function() {
+		i = window.setInterval(function() {
+			ctx.drawImage(video, 0, 0, 350, 450)
+		}, 2000);
+		ctx.getImageData(0, 0, 350, 450);
+	}, false);
+	i.setAttribute('crossOrigin', 'Anonymous');
+	video.addEventListener('pause', function() {window.clearInterval(i);}, false);
+	video.addEventListener('ended', function() {clearInterval(i);}, false);
+</script>
+</body>
+</html>
