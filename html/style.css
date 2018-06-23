@@ -1,0 +1,114 @@
+*{
+  margin:0px;
+  padding:0px;
+}
+
+body {
+  font-size: 14px;
+  font-family: "helvetica", "Microsoft Yahei";
+}
+
+header, article, nav, section, aside, main, footer {
+  display: block;
+}
+
+#wrapper {
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.siteHeader{
+  background: #169fe6;
+  color: white;
+  height: 60px;
+  text-shadow: 3px 3px 3px #000;
+  clear: both;
+}
+a {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+a:hover {
+  color:#5188a6;
+  text-decoration: none;
+}
+
+.navSideBar{
+  font-size: 16px;
+  color: #6B5E3F;
+  width: 20%;
+  height: 500px;
+  background: #f9f9f9;
+  border: 3px #6AC5AC solid;
+  float: left;
+  position: relative;
+}
+
+aside.navSideBar nav,
+aside.navSideBar article {
+  padding: 5px 20px;
+}
+
+aside.navSideBar h2 {
+  color: #6B6E3F;
+  border-bottom: 1px #6B6E3F solid;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+aside.navSideBar ul {
+  padding-left: 20px;
+}
+
+aside.navSideBar li {
+  padding-bottom: 8px;
+  line-height: 30px;
+}
+
+.content {
+  width: 77%;
+  border: solid #FDC72F 3px;
+  float: left;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.content article {
+  padding: 20px;
+}
+header.artHeader{
+  padding: 10px;
+  margin-left: 10px;
+  text-align: center;
+}
+header.artHeader h2 {
+  font-size: 22px;
+}
+header.artHeader h3 {
+  margin-top: 8px;
+  font-weight: bold;
+}
+header.artHeader .byline {
+  margin-top: 8px;
+  font-style: italic;
+  font-size: small;
+}
+.artSection {
+  /* display: flex; */
+}
+
+footer {
+  background: #333;
+  color: #c0c0c0;
+  padding: 10px;
+  text-align: center;
+  font-size: 12px;
+  font-style: italic;
+  border: solid #D64078 3px;
+  clear: both;
+}
+
+footer p {
+  margin:3px;
+}
