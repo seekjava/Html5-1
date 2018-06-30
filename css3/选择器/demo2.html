@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>选择器</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  /* 组选择器 */
+  .clearfix:after,.clearfix:before {
+      display: table;
+      content: "*";
+    }
+
+    .clearfix:after {
+      clear: both;
+      overflow: hidden;
+    }
+
+  /* 类选择器 */
+  .demo {
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 20px auto;
+  }
+
+  .demo * {
+      background: orange;
+  }
+  /* 标签选择器 */
+  li {
+      list-style: none outside none;
+      float: left;
+      height: 50px;
+      line-height: 50px;
+      width: 50px;
+      border-radius: 30px;
+      text-align: center;
+      background: #f36;
+      color: green;
+      margin-right: 5px;
+    }
+    /* id 选择器 */
+    #first {
+      background: lime;
+      color: #000;
+    }
+
+    #last {
+      background: #000;
+      color: lime;
+    }
+    .elem {
+      background: green;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .elem.item {
+      background: red;
+    }
+</style>
+<body>
+  <ul class="clearfix demo">
+      <li id="first">1</li>
+      <li>2</li>
+      <li class="item">3</li>
+      <li class="elem item">4</li>
+      <li class="elem item">5</li>
+      <li class="elem item">6</li>
+      <li style="background: yellow;">7</li>
+      <li>8</li>
+      <li>9</li>
+      <li id="last">10</li>
+    </ul>
+    <div>12</div>
+</body>
+</html>

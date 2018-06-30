@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>border 制作的tabs效果</title>
+</head>
+<style>
+  .tabs-box{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    zoom: 1;
+    border-bottom: 3px solid #9eaab6;
+  }
+
+  .tabs-box>div {
+    float: left;
+    display: inline;
+    list-style: none outside none;
+    border: 1px solid #9EAAB6;
+    margin: 10px 1px 1px;
+    padding: 10px;
+    border-image: url("border-image-tab.png") 0 5 0 5;
+    -webkit-border-image: url("border-image-tab.png") 0 5 0 5;
+    -o-border-image: url("border-image-tab.png") 0 5 0 5;
+    border-width: 0 5px;
+    /*
+    border-radius: top-left, top-right, bottom-right, bottom-left
+    两个值时：第一个值时上左，下右，第一个值上右，下左
+    三个值时：第一个值上左，第二个值上右，下左， 第三个值下右
+    */
+    border-radius: 10px/5px;
+    text-align: center;
+    text-shadow: 0 -1px 0 black;
+  }
+  /*
+    overflow:
+    visible: 默认值，内容不会被修剪，会呈现在元素框之外。
+    scroll: 会被修剪，但是浏览器会显示滚动条。
+    auto： 如果内容被修剪，浏览器会显示滚动条。
+    inherit: 父元素中继承overflow
+   */
+  .div-scroll {
+    width: 100px;
+    height: 100px;
+    overflow: visible;
+    margin: 100px;
+    border: 1px solid black;
+  }
+</style>
+<body>
+  <div class="tabs-box">
+    <div>Home</div>
+    <div>Html5</div>
+    <div>Css3</div>
+    <div>Javascript</div>
+    <div>Vue</div>
+</div>
+<div class="div-scroll">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+</body>
+</html>

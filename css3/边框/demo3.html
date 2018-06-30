@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>border-radius 应用</title>
+  <style>
+    img {
+      border-radius: 30px;
+      margin: 10px 100px;
+      width: 300px;
+    }
+
+    .node {
+      display: inline-block;
+      border: 10px solid red;
+    }
+
+    .circle {
+      width: 50px;
+      height: 50px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+    }
+
+    .elipse {
+      width: 50px;
+      height: 100px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+    }
+
+    .demo {
+      display: inline-block;
+      border: 10px solid red;
+      margin: 100px;
+    }
+
+    .div1 {
+      width: 200px;
+      height: 100px;
+      border-radius: 0px 50px 32px/28px 50px 70px;
+    }
+
+    .div2 {
+      width: 100px;
+      height: 200px;
+      border-radius: 26px 106px 162px 32px/28px 80px 178px 26px;
+    }
+
+    .div3 {
+      width: 100px;
+      height: 200px;
+      border-radius: 20px 50px/ 20px 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="./photo.jpg">
+  <div class="node circle"></div>
+  <div class="node elipse"></div>
+  <br>
+  <div class="demo div1"></div>
+  <div class="demo div2"></div>
+  <div class="demo div3"></div>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>属性选择器</title>
+  <style>
+
+    a {
+      font-size: 24px;
+      text-decoration: none;
+      padding-right: 20px;
+      display: inline-block;
+      margin-bottom: 5px;
+      background: #6AC5AC;
+    }
+    /* Selenium 使用场景：前端ui 自动测试进行断言的时候 */
+    /* 选择具有href属性且属性值等于home的a元素 */
+
+    a[href="home"] {
+      background: lime;
+    }
+
+    /* 选择具有href属性且属性值为以http://开头的字符串的a元素 */
+
+    a[href^="http://"] {
+      background: #fdd;
+    }
+
+    /* 选择具有href属性且属性值为以png结尾的字符串的a元素 */
+
+    a[href$="png"] {
+      background: blue;
+      color: white;
+    }
+
+    /* 选择具有class属性且属性值为包含b的字符串的div元素 */
+
+    div[class*="b"] {
+      line-height: 30px;
+      border: 2px solid #FF9090;
+    }
+
+    div[class|="d"] {
+      line-height: 30px;
+      border: 2px solid #000;
+    }
+  </style>
+
+</head>
+
+<body>
+  <ul>
+    <li><a href="http://bing.com">bing</a></li>
+    <li><a href="home">home</a></li>
+    <li><a href="f.png">png图片文档</a></li>
+  </ul>
+  <div class="abc">1</div>
+  <div class="acd">2</div>
+  <div class="bce">3</div>
+  <div class="c-test">test1</div>
+  <div class="d-test">test2</div>
+  <div class="e-test">test3</div>
+</body>
+
+</html>

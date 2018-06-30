@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>border 按钮的制作</title>
+</head>
+<style>
+.btns {
+  margin: 60px;
+}
+/*
+  border：<line-width> || <line-style> || <color>
+  <line-width>：设置或检索对象边框宽度。
+  <line-style>：设置或检索对象边框样式。
+  <color>：设置或检索对象边框颜色。
+ */
+ /*
+   border-image: source, slice, width, outset, repeat
+   source：设置或检索对象的边框是否用图像定义样式或图像来源路径。
+   slice：设置或检索对象的边框背景图的分割方式。
+   width：设置或检索对象的边框厚度。
+   outset：设置或检索对象的边框背景图的扩展。
+   repeat：设置或检索对象的边框图像的平铺方式。
+  */
+.border-image-btn {
+  display: inline;
+  border: 18px solid lime;
+  border-width: 0 18px;
+  border-image: url("button_sprite.png") 0 18 50 18;
+  -webkit-border-image: url("button_sprite.png") 0 18 50 18;
+  -ms-border-image: url("button_sprite.png") 0 18 50 18;
+  padding: 13px 10px 17px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 15px;
+  margin: 10px;
+}
+.border-image-btn:hover {
+  border-image: url("button_sprite.png") 50 18 0 18;
+  -webkit-border-image: url("button_sprite.png") 50 18 0 18;
+  -o-border-image: url("button_sprite.png") 50 18 0 18;
+  color: #000;
+  border-color: yellow;
+  text-decoration: none;
+}
+</style>
+<body>
+  <div class="btns">
+    <a href="#" class="border-image-btn">Click me</a>
+    <a href="#" class="border-image-btn">再次点击</a>
+    <a href="#" class="border-image-btn">boder制作的button</a>
+  </div>
+</body>
+</html>

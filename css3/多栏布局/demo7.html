@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex布局</title>
+  <style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  .layout article div {
+    min-height: 100px;
+  }
+  .layout.flexbox {
+    margin-top: 110px;
+  }
+  .layout.flexbox .left-center-right {
+    display: flex;
+  }
+  .layout.flexbox .left {
+    width: 300px;
+    background: red;
+  }
+  /*
+  flex：none | <flex-grow> <flex-shrink > || <flex-basis>
+  flex 的默认值是以上三个属性值的组合。
+  flex-grow 值，flex-shrink 取 1，flex-basis 取 0%
+  取值负数无效
+   */
+  .layout.flexbox .center {
+    flex: 1 1 400px;
+    background: yellow;
+  }
+  .layout.flexbox .right {
+      width: 300px;
+      background: blue;
+    }
+  </style>
+</head>
+<body>
+<!--
+felxbox布局是css3里新出的一个，
+它就是为了解决上述两种方式的不足出现的，
+是比较完美的一个。目前移动端的布局也都是用flexbox。
+felxbox的缺点就是不能兼容IE9及以下浏览器。
+  -->
+  <!--
+重点掌握：align-items, justify-content
+ -->
+  <section class="layout flexbox">
+      <h1>三栏布局</h1>
+      <article class="left-center-right">
+        <div class="left"></div>
+        <div class="center">
+          <h2>flexbox解决方案</h2> 1.这是三栏布局的felx解决方案； 2.这是三栏布局的flex解决方案；
+        </div>
+        <div class="right"></div>
+      </article>
+    </section>
+</body>
+</html>

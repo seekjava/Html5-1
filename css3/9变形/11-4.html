@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>transform-origin改变元素原点前后rotate3d()旋转图像效果</title>
+	<style type="text/css">
+		#perspective1 {
+			position: relative;
+			height: 150px;
+			width: 150px;
+			margin: 50px;
+			padding:10px;
+			border: 1px solid black;
+			perspective: 150;
+			-webkit-perspective: 150; /* Safari and Chrome */
+		}
+
+		#perspective2 {
+			padding:50px;
+			position: absolute;
+			border: 1px solid black;
+			background-color: lavender;
+			transform: rotateX(45deg);
+			-webkit-transform: rotateX(45deg); /* Safari and Chrome */
+		}
+		#div1 {
+			width: 500px;
+			height: 300px;
+			margin: 30px auto;
+			position: relative;
+			background: url(images/bg-grid.jpg) no-repeat center center;
+			background-size: 100% 100%;
+		}
+		#div1 img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -71px;
+			margin-top: -100px;
+			-webkit-backface-visibility: visible;
+			-moz-backface-visibility: visible;
+			-o-backface-visibility: visible;
+			-ms-backface-visibility: visible;
+			backface-visibility: visible;
+			/**
+			 * perspective 属性定义 3D 元素距视图的距离，以像素计。
+			 * 该属性允许您改变 3D 元素查看 3D 元素的视图。
+       * 当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。
+			 * 注释：perspective 属性只影响 3D 转换元素。
+			 */
+			-webkit-transform: perspective(500px);
+			-moz-transform: perspective(500px);
+			-ms-transform: perspective(500px);
+			-o-transform: perspective(500px);
+			transform: perspective(500px);
+		}
+		#div1 img:nth-child(1){
+			opacity: .5;
+			z-index: 1;
+			/*rotate3d(x,y,z,angle)	定义 3D 旋转。*/
+			-webkit-transform: rotate3d(1, 1, 1,10deg);
+			-moz-transform: rotate3d(1, 1, 1,10deg);
+			-ms-transform: rotate3d(1, 1, 1,10deg);
+			-o-transform: rotate3d(1, 1, 1,10deg);
+			transform: rotate3d(1, 1, 1,10deg);
+		}
+		#div1 img:nth-child(2){
+			opacity: .6;
+			z-index: 2;
+			-webkit-transform: rotate3d(1, 1, 1,25deg);
+			-moz-transform: rotate3d(1, 1, 1,25deg);
+			-ms-transform: rotate3d(1, 1, 1,25deg);
+			-o-transform: rotate3d(1, 1, 1,25deg);
+			transform: rotate3d(1, 1, 1,25deg);
+		}
+		#div1 img:nth-child(3){
+			opacity: .7;
+			z-index: 3;
+			-webkit-transform: rotate3d(1, 1, 1,35deg);
+			-moz-transform: rotate3d(1, 1, 1,35deg);
+			-ms-transform: rotate3d(1, 1, 1,35deg);
+			-o-transform: rotate3d(1, 1, 1,35deg);
+			transform: rotate3d(1, 1, 1,35deg);
+		}
+		#div1 img:nth-child(4){
+			opacity: .8;
+			z-index: 4;
+			-webkit-transform: rotate3d(1, 1, 1,45deg);
+			-moz-transform: rotate3d(1, 1, 1,45deg);
+			-ms-transform: rotate3d(1, 1, 1,45deg);
+			-o-transform: rotate3d(1, 1, 1,45deg);
+			transform: rotate3d(1, 1, 1,45deg);
+		}
+		#div1 img:nth-child(5){
+			z-index: 5;
+			-webkit-transform: rotate3d(1, 1, 1,60deg);
+			-moz-transform: rotate3d(1, 1, 1,60deg);
+			-ms-transform: rotate3d(1, 1, 1,60deg);
+			-o-transform: rotate3d(1, 1, 1,60deg);
+			transform: rotate3d(1, 1, 1,60deg);
+		}
+		#div1:nth-of-type(2) img {
+			-webkit-transform-origin: left bottom -50px;
+			-moz-transform-origin: left bottom -50px;
+			-o-transform-origin: left bottom -50px;
+			-ms-transform-origin:left bottom -50px;
+			transform-origin: left bottom -50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="perspective1">
+	  <div id="perspective2">Hello World</div>
+	</div>
+	<div id="div1">
+		<img src="images/cardKingClub.png" alt="" width="142" height="200" />
+		<img src="images/cardKingClub.png" alt="" width="142" height="200" />
+		<img src="images/cardKingClub.png" alt="" width="142" height="200" />
+		<img src="images/cardKingClub.png" alt="" width="142" height="200" />
+		<img src="images/cardKingClub.png" alt="" width="142" height="200" />
+	</div>
+	<div id="div1">
+		<img src="images/cardKingClub.png" alt="" width="142" height="200" />
+		<img src="images/cardKingClub.png" alt="" width="142" height="200" />
+		<img src="images/cardKingClub.png" alt="" width="142" height="200" />
+		<img src="images/cardKingClub.png" alt="" width="142" height="200" />
+		<img src="images/cardKingClub.png" alt="" width="142" height="200" />
+	</div>
+
+</body>
+</html>

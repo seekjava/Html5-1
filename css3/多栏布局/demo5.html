@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浮动布局</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .layout article div {
+      min-height: 100px;
+    }
+    .layout.float .left {
+      float: left;
+      width: 300px;
+      background: red;
+    }
+    .layout.float .right {
+      float: right;
+      width: 300px;
+      background: blue;
+    }
+    .layout.float .center {
+      background: yellow;
+    }
+  </style>
+</head>
+<body>
+  <section class="layout float">
+    <h1>三栏布局</h1>
+    <!--
+    浮动布局的缺点：浮动的元素是脱离来文档流，要做清除浮动（clear:both）,
+    这个处理不好会引起高度塌陷（如：bfc）
+    优点： 比较简单，兼容性比较好。只要清除浮动做的好，就没什么问题。
+   -->
+    <article class="left-right-center">
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="center">
+        <h2>浮动解决方案</h2> 1.这是三栏布局的浮动解决方案； 2.这是三栏布局的浮动解决方案；
+      </div>
+    </article>
+  </section>
+</body>
+</html>

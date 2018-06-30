@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>opacity透明度</title>
+</head>
+<style>
+h1 {
+  margin: 10px 0;
+  font-size: 16px;
+}
+.test1, .test2 {
+  width: 300px;
+  height: 150px;
+  padding: 10px;
+}
+.test1  {
+  background: #050;
+}
+.test2 {
+  margin:  -120px 0 0 50px;
+  background: #000;
+  filter: alpha(opacity=50);
+  opacity: .5;
+  color: #fff;
+}
+</style>
+<body>
+  <h1>我们做一个半透明的效果</h1>
+  <div class="test1">不透明100%</div>
+  <div class="test2">不透明50%</div>
+</body>
+</html>
