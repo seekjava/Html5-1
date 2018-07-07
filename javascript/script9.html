@@ -1,0 +1,257 @@
+oop 面向对象程序设计 object-oriented programming
+特性：
+继承、封装、多态、抽象
+
+基于原型的继承
+funciton	 foo() {
+this.y =3;
+}
+typeof foo.prototype; // "object"
+foo.prototype.x =1;
+var obj3 = new foo();
+
+obj3.y; // 2
+obj3.x; // 1
+我们创建一个对象时，它就会生成一个prototype属性
+
+foo -> prototype(x=1) <-obj1 -- obj2 --obj3 (y=2)
+
+prototype属性与原型
+funciton foo() {}
+typeof foo.prototype; // "object"
+foo.prototype.x =1;
+var obj3 = new foo();
+// 对象上包含一个prototype，是对象预设的属性
+foo.prototype
+// 它的结构是
+{
+constructor: foo,
+_proto_ : Object.prototype,
+x: 1
+}
+
+//我们看一个例子
+function Person(name, age) {
+this.name = name;
+this.age = age;
+}
+Person.prototype.hi = function() {
+console.log("hi, my name is" + "this.name" + ", I'm" +
+this.age + "years old now");
+}
+Person.prototype.LEGS = 2;
+Person.prototype.ARMS = 2;
+Person.prototype.walk = function() {
+console.log(this.name + "is walking...");
+}
+
+function Student(name, age, className) {
+Person.call(this, name, age);
+this.className = className;
+}
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.constructor = Student;
+
+Student.prototype.hi = function() {
+console.log("hi, my name is" + "this.name" + ", I'm" +
+this.age + "years old now, and from" +
+this.className + ",");
+}
+
+Student.prototype.learn = function(subject) {
+console.log(this.name + "is learning" + subject +
+ 	'at' + this.className + ".");
+}
+
+var bosn = new Student("Bosn", 27, "Class 3, Grade 2");
+bosn.hi(); // Hi, my name is Bosn, I'm 27years old now ,and formClass3, Grade2
+
+bosn.LEGS; //2
+bosn.walk(); // Bosn is walking...
+bosn.learn("math"); // Bosn is learning math at Class3, Grade 2.
+
+
+var obj = {x: 1}
+obj // Object {x: 1}
+obj.x //1
+obj._proto_
+object.getPrototypeOf(obj)
+
+object.getPrototypeOf(obj) === Object.prototype
+// 正因为如此，我们才能调用object 的方法
+// 不是所有的对象都能有objec上的方法
+Object.create(null) 创建的对象是一个空对象，在该对象上没有继承 Object.prototype 原型链上的属性或者方法,例如：toString(), hasOwnProperty()等方法
+Object.create()方法接受两个参数:Object.create(obj,propertiesObject) ;
+obj:一个对象，应该是新创建的对象的原型。
+propertiesObject：可选。该参数对象是一组属性与值，该对象的属性名称将是新创建的对象的属性名称，值是属性描述符（这些属性描述符的结构与Object.defineProperties()的第二个参数一样）。注意：该参数对象不能是 undefined，另外只有该对象中自身拥有的可枚举的属性才有效，也就是说该对象的原型链上属性是无效的。
+使用Object.create()是将对象继承到__proto__属性上
+
+比如：
+var obj2 = Object.create(null);
+obj2._proto_
+obj2.toString // undefined
+// 并不是所有的函数对象上都有对象的prototype
+// 比如
+function abc() {}
+abc.prototype
+var binded = abc.bind(null);
+typeof bined
+binded.prototype // undefined 就没有prototype 属性
+
+Student.prototype.x = 101;
+bosn.x; // 101
+
+Student.prototype = {y: 2};
+bosn.y; // undefined  实际上我们修门修改student.prototype时，
+// 并不能影响已经创建的bosn实例
+// x 时我们修改的是实例bosn原型的那个对象属性的值
+bosn.y; // 101
+
+var nunnyl = new Strudent("Nunnly", 3, "anything");
+vannly.x; // undefined
+vannly.y; // 2
+
+new
+Object.create创建对象是创建一个拥有指定原型和若干个指定属性的对象，也就是说可以任意指定原型，甚至是null, 而new Object（）只是创建了一个以Object.prototype为原型的对象。如果此处你new Object泛指通过new操作符来创建一个实例对象的话，只要运用得当，二者并不太大差别。
+
+内置构造器的prototype
+Object.prototype.x = 1;
+var obj = {};
+obj.x; // 1
+for (var key in obj) {
+console.log("result: " + key);
+}
+// result: x
+Object.defineProperty(Object.prototype, 'x',
+{writable: true, value: 1});
+var obj = {};
+obj.x; // 1
+for (var key in obj) {
+console.log("result: " + key);
+}
+// nothing output here
+
+创建对象 new / 原型链
+function foo() {}
+foo.prototype.z = 3;
+
+var obj = new foo();
+obj.y = 2;
+obj.x = 1;
+typeof  obj.toString; // "function"
+如果我们不想让它去原型上查找的时候
+"z" in obj; // true
+obj.hasOwnProperty('z'); // false
+
+instanceof
+[1, 2] instanceof Array === true
+new Object() instanceof Array === false
+右边不是对象就会报错
+function Student() {}
+var s = new Student();
+s instanceof Student
+
+实现继承的方式
+function Person() {
+}
+function Student() {
+}
+// 接下来我们看一种赋值方式
+// 这种方式是不行的，我们在改变student 的同事，也会改掉person
+Student.prototype = Person.prototype; // 不可以
+// 这种继承方式可以吗？把new出的person实例赋给student的prototype上
+// 这种继承方式也是不行的，这种方式调用了person的构造函数指向了
+// student.prototype也实现了继承，但是如果我们在person上添加了属性
+// name，age， 这种情况下我们传给它任何参数都是很奇怪的
+Student.prototype = new Person();
+// 较为理想的办法是我们创建了object对象，并且对象的原型指向了
+// person.prototype, 这样我们既可以继承person上的方法，
+// student.prototype又有自己的一个空的对象，自己的修改也不会影响到
+// 原型链，这是利用了写操作方法不会向原型链查找的特性
+// 缺点是es5之后才支持的
+Student.prototype = Object.create(Person.prototype); // 3
+Student.prototype.constructor = Person;
+
+// 也没有关系，我们下面演示一下在es5之前的模拟方法
+// 我们先判断一下object上有没有create方法
+// 如果没有的话，我们赋一个函数，并把函数的proto作为参数传进来
+// 我们在创建一个空函数，并把proto传给这个空函数的prototype
+// 并new 把函数F 的构造器返回。
+// 那么这样就会创建一个对象， 这个对象的原型指向传入对象的prototype
+if (!Object.create) {
+Object.create = function(proto) {
+function F() {}
+F.prototype = proto;
+return new F;
+};
+}
+
+重载
+function Person() {
+var args = arguments;
+if (typeof args[0] === 'object' && args[0]) {
+if (args[0].name) {
+this.name = args[0].name;
+}
+if (args[0].age) {
+this.age = args[0].age;
+}
+} else {
+if (args[0]) {
+this.name = args[0];
+}
+if (args[1]) {
+this.age = args[1];
+}
+}
+}
+
+Person.prototype.toString = function() {
+return 'name=' + this.name + ', age' + this.age;
+}
+var pd = new Person('pd', 38);
+pd.toString(); // "name=pd, age38"
+var victor = new Person({name: 'victor', age: 28});
+nun.toString(); // "name=victor, age28"
+
+// 在调用子类方法
+// 在实现继承的时候，我们会重复调用子类方法
+function Person(name)  {this.name = name;} // 父类
+function Student(name, className) {
+this.className = className; // 我想初始化学生的className
+Person.call(this, name); // 我还想初始化person的名字，我们用这个方法
+   //  来调用父类的方法和属性，调用父类的构造器
+}
+var pd = new Student("pd", 'ecommerce');
+pd; // 父类和子类都会被初始化
+
+// 我们初始化一下父类
+Person.prototype.init = function() {};
+Student.prototype.init = function() {
+// do sth
+// 我们在初始化子类方法后，也想调用父类方法的初始化方法
+Person.prototype.init.apply(this, arguments);
+}
+
+链式调用：
+function Manager () {}
+Manager.prototype.addClass = function(str) {
+console.log('class-->' + str + '-->added');
+return this;
+}
+var mgr = new Manager();
+mgr.addClass("a"). addClass("b").addClass("c");
+// class-->a-->added
+// class-->b-->added
+// class-->c-->added
+
+模块化
+var moduleA;
+moduleA = function() {
+var prop = 1;
+funciton func() {}
+return {
+func: func,
+prop: prop
+}
+}();

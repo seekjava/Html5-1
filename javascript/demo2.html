@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>test</title>
+</head>
+<body>
+<h1>函数</h1>
+<script>
+
+document.body.innerHTML = "<div id =div1>aaa</div>" + "<div id='div2'>bbb</div> <div id=div3>ccc</div>";
+for (var i = 1; i < 4; i++) {
+  !function(i) {
+    document.getElementById('div' + i).
+    addEventListener('click', function() {
+      alert(i); // 1, 2, 3
+    });
+  }(i); // 1, 2, 3
+}
+// fd();
+// function fd() {
+//   console.log('hello');
+// }
+
+// var fd = function() {
+//   console.log('hello');
+// }
+
+  // "use strict";
+  // x = 3.14;
+  // console.log(x);
+
+  // foo();
+  // function foo() {
+  //   "use strict"
+  //   y = 3.14;
+  //   document.write(y);
+  // }
+  // "use strict";
+  // var x = 32;
+  // delete x;
+  // document.write(x);
+  // "use strict";
+  // var x = 010;
+  // document.write(x);
+</script>
+
+ </script>
+</body>
+</html>
