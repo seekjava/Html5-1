@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>条件与循环和过滤器</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <p v-if="seen">{{message}}</p>
+    <ol>
+      <li v-for="(item, index) in todos" v-if="index != 1">
+        {{ item.text }} {{ index }}
+      </li>
+    </ol>
+    <input v-model="twoWay">
+    <p>{{ twoWay }}</p>
+    <button v-on:click="reverseMessage">逆转消息</button>
+    <br><br>
+    <div>{{ message | capitalize }}</div>
+  </div>
+</body>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      message: 'hello Vue.js',
+      twoWay: '',
+      seen: true,
+      todos: [{
+          text: '学习 JavaScript'
+        },
+        {
+          text: '学习 Vue'
+        },
+        {
+          text: '整个牛项目'
+        }
+      ]
+    },
+    watch: {
+      twoWay: function(val) {
+        console.log('**twoWay**', val, this.twoWay);
+      }
+    },
+    methods: {
+      reverseMessage: function() {
+        this.message = this.message.split('').reverse().join('')
+      }
+    },
+    filters: {
+      capitalize: function(value) {
+        if (!value) return '';
+        value = value.toString();
+        return value.charAt(0).toUpperCase() + value.slice(1);
+      }
+    }
+  });
+</script>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件通信，子组件到父组件</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <style>
+    .search-query {
+      height: 30px;
+      line-height: 30px;
+      box-sizing: border-box;
+      padding: 0 15px 0 30px;
+      border: 1px solid #6AC5Ac;
+      color: #2c3e50;
+      outline: none;
+      border-radius: 5px;
+      margin-right: 10px;
+      margin-left: 10px;
+      transition: border-color 0.2s ease;
+      background-size: 20px;
+      vertical-align: middle !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <input class="search-query" v-model="parentMsg">
+    <br><br><br>
+    <child v-bind:my-message="parentMsg"></child>
+  </div>
+</body>
+<script>
+  Vue.component('child', {
+    // 在 JavaScript 中使用 camelCase
+    props: ['myMessage'],
+    template: '<h1>{{ myMessage }}</h1>'
+  });
+
+  new Vue({
+    el: '#app',
+    data: {
+      parentMsg: 'Message from parent'
+    }
+  })
+</script>
+
+</html>

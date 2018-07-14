@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数据双向绑定的原理</title>
+</head>
+<body>
+  <!-- <div> 你好，<span id='nickName'></span>
+    <div id="introduce"></div>
+  </div> -->
+  <div id="app">
+    <input type="text" id="inpt">
+    <p id="lb"></p>
+  </div>
+  <script>
+      //
+      // var userInfo = {};
+      // Object.defineProperty(userInfo, "nickName", {
+      //   get: function() {
+      //     return document.getElementById('nickName').innerHTML;
+      //   },
+      //   set: function(nick) {
+      //     document.getElementById('nickName').innerHTML = nick;
+      //   }
+      // });
+      // Object.defineProperty(userInfo, "introduce", {
+      //   get: function() {
+      //     return document.getElementById('introduce').innerHTML;
+      //   },
+      //   set: function(intr) {
+      //     document.getElementById('introduce').innerHTML = intr;
+      //   }
+      // });
+      // userInfo.nickName = "Ray";
+      // userInfo.introduce = "我是Ray，我来自中国。。。";
+      // console.log('------1------->', userInfo.nickName);
+      // console.log('-------2------>', userInfo.introduce);
+
+      var obj = {};
+       Object.defineProperty(obj, "hello", {
+         get: function() {
+           console.log('get val: ' + val);
+           return val;
+         },
+         set: function(inputValue) {
+           console.log('set val:', + inputValue);
+           document.getElementById('inpt').value = inputValue;
+           document.getElementById('lb').innerHTML = inputValue;
+         }
+       });
+       document.addEventListener('keyup', function(e) {
+         obj.hello = e.target.value;
+       });
+  </script>
+</body>
+</html>

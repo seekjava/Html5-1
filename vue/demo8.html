@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>动态添加组件</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <p>{{ message }}</p>
+    <button @click="add('aComponent', '我是A')">添加A组件</button>
+    <button @click="add('b-component', '我是B')">添加B组件</button>
+    <component :is="item.component" :text="item.text" v-for="item in items"></component>
+  </div>
+
+</body>
+<script>
+  const aComponent = Vue.extend({
+    props: ['text'],
+    template: '<li>A Component: {{ text }}</li>'
+  })
+
+  const bComponent = Vue.extend({
+    props: ['text'],
+    template: '<li>B Component: {{ text }}</li>'
+  })
+
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        message: 'Hello Vue.js!',
+        items: []
+      }
+    },
+    methods: {
+      add(name, text) {
+        this.items.push({
+          component: name,
+          text: text
+        })
+      }
+    },
+    components: {
+      aComponent,
+      bComponent
+    }
+  })
+</script>
+
+</html>

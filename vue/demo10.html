@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Render</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="container">
+    <tb-heading @input="inputFunc">
+      This is Header
+    </tb-heading>
+    <tb-content></tb-content>
+    <tb-footer :level="2">
+      <a href="#">It's footer</a>
+    </tb-footer>
+    <h1>hello everyone!</h1>
+  </div>
+</body>
+
+<script>
+  Vue.component('tb-heading', {
+    render: function(createElement) {
+      var self = this;
+      return createElement('input', {
+        domProps: {
+          value: '11'
+        },
+        on: {
+          input: function(event) {
+            self.value = event.target.value;
+            self.$emit('input', self.value);
+          }
+        }
+      })
+    },
+    props: {
+
+    }
+  });
+  Vue.component('tb-content', {
+    render: function(createElement) {
+      console.log(this)
+      if (this.items.length) {
+        return createElement(
+          'ul',
+          this.items.map(function(item) {
+          return createElement(
+            'li',
+             item.name);
+        }))
+      } else {
+        return createElement('p', 'No items found.');
+      }
+    },
+    props: {
+      items: {
+        type: Array,
+        default: function() {
+          return [{
+              name: 'kongzhi1'
+            },
+            {
+              name: 'kongzhi2'
+            }
+          ]
+        }
+      }
+
+    }
+  });
+  Vue.component('tb-footer', {
+    render: function(createElement) {
+      return createElement(
+        'h' + this.level, // tag name 标签名称
+        this.$slots.default // 组件的子元素
+      )
+    },
+    props: {
+      level: {
+        type: Number,
+        required: true
+      }
+    }
+  });
+  new Vue({
+    el: '#container',
+    methods: {
+      inputFunc: function(value) {
+        console.log(value)
+      }
+    }
+  });
+</script>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>slot插槽</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <app>
+      <child></child>
+      <child2></child2>
+    </app>
+  </div>
+</body>
+<script>
+  Vue.component('app', {
+    template: '\
+       <div>\
+           <slot>没有则显示这个</slot>\
+           <li>111</li>\
+           <li>222</li>\
+           <li>333</li>\
+       </div>\
+       ',
+  });
+  var app = new Vue({
+    el: '#app',
+    components: {
+      'child': {
+        template: '<div>hello word</div>'
+      },
+      'child2': {
+        template: '<div>hello vue js</div>'
+      }
+    }
+  });
+</script>
+
+</html>

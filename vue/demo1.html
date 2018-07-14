@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>声明式渲染, 计算属性, 侦听器</title>
+
+  <!-- 开发版本，包含有用的控制台警告 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    .isGold {
+      background: gold;
+    }
+
+    .isGreen {
+      background: green;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="app">
+    <p>{{greet}}</p>
+    <div>
+      <span v-bind:title="message" :style="selfStyle">
+        鼠标悬停几秒钟查看此处动态绑定的提示信息！
+        {{message}}
+      </span>
+    </div>
+    <input v-model="firstName" type="text">
+    <p>Original message: "{{ name }}"</p>
+    <p :class="changeClass">Computed reversed message: "{{ reversedMessage }}"</p>
+    <div style="color: red; font-weight: bold; font-size: 22px;">{{ fullName }}</div>
+  </div>
+</body>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      greet: 'Hello Vue!',
+      message: '页面加载于 ' + new Date().toLocaleString(),
+      name: 'pu,dong',
+      firstName: 'Foo',
+      lastName: 'hello',
+      fullName: '',
+      changeClass: 'isGold',
+      formData: {
+        name: '',
+        age: ''
+      }
+    },
+    computed: {
+      // 计算属性的 getter
+      reversedMessage: function() {
+        // `this` 指向 vm 实例
+        return this.name.split(',').reverse().join('')
+      },
+      selfStyle: function() {
+        return 'color: blue';
+      }
+    },
+    watch: {
+      firstName: function(val) {
+        this.changeClass = 'isGreen';
+        console.log('------fistname---->', val);
+        this.fullName = val + ' ' + this.lastName;
+      },
+      lastName: function(val) {
+        console.log('------lastname---->', val);
+        this.fullName = this.firstName + ' ' + val;
+      }
+    }
+  });
+</script>
+
+</html>
